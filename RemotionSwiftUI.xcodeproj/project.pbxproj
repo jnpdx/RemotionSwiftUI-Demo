@@ -11,17 +11,38 @@
 		D2B8DD6E283F5054000391FB /* RemotionSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */; };
 		D2B8DD6F283F5054000391FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD5E283F5053000391FB /* ContentView.swift */; };
 		D2B8DD70283F5054000391FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD5E283F5053000391FB /* ContentView.swift */; };
-		D2B8DD71283F5054000391FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B8DD5F283F5054000391FB /* Assets.xcassets */; };
-		D2B8DD72283F5054000391FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B8DD5F283F5054000391FB /* Assets.xcassets */; };
+		D2B8DD7D283F5074000391FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD7C283F5074000391FB /* User.swift */; };
+		D2B8DD7E283F5074000391FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD7C283F5074000391FB /* User.swift */; };
+		D2B8DD80283F507B000391FB /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD7F283F507B000391FB /* Team.swift */; };
+		D2B8DD81283F507B000391FB /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD7F283F507B000391FB /* Team.swift */; };
+		D2B8DD83283F5088000391FB /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD82283F5088000391FB /* Room.swift */; };
+		D2B8DD84283F5088000391FB /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD82283F5088000391FB /* Room.swift */; };
+		D2B8DD86283F51AC000391FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B8DD85283F51AC000391FB /* Assets.xcassets */; };
+		D2B8DD87283F51AC000391FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B8DD85283F51AC000391FB /* Assets.xcassets */; };
+		D2B8DD89283F523F000391FB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD88283F523E000391FB /* AppState.swift */; };
+		D2B8DD8A283F523F000391FB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD88283F523E000391FB /* AppState.swift */; };
+		D2B8DD8D283F5308000391FB /* DockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD8C283F5308000391FB /* DockView.swift */; };
+		D2B8DD8E283F5308000391FB /* DockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD8C283F5308000391FB /* DockView.swift */; };
+		D2B8DD90283F54B1000391FB /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD8F283F54B1000391FB /* RoomView.swift */; };
+		D2B8DD91283F54B1000391FB /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD8F283F54B1000391FB /* RoomView.swift */; };
+		D2B8DD93283F54F5000391FB /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD92283F54F5000391FB /* UserAvatarView.swift */; };
+		D2B8DD94283F54F5000391FB /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD92283F54F5000391FB /* UserAvatarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotionSwiftUIApp.swift; sourceTree = "<group>"; };
 		D2B8DD5E283F5053000391FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D2B8DD5F283F5054000391FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2B8DD64283F5054000391FB /* RemotionSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemotionSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B8DD6A283F5054000391FB /* RemotionSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemotionSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B8DD6C283F5054000391FB /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		D2B8DD7C283F5074000391FB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D2B8DD7F283F507B000391FB /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		D2B8DD82283F5088000391FB /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		D2B8DD85283F51AC000391FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../GitHub/Remotion/App/Assets.xcassets; sourceTree = "<group>"; };
+		D2B8DD88283F523E000391FB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D2B8DD8C283F5308000391FB /* DockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockView.swift; sourceTree = "<group>"; };
+		D2B8DD8F283F54B1000391FB /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
+		D2B8DD92283F54F5000391FB /* UserAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +77,10 @@
 			children = (
 				D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */,
 				D2B8DD5E283F5053000391FB /* ContentView.swift */,
-				D2B8DD5F283F5054000391FB /* Assets.xcassets */,
+				D2B8DD88283F523E000391FB /* AppState.swift */,
+				D2B8DD8B283F52FD000391FB /* Views */,
+				D2B8DD7B283F5064000391FB /* Models */,
+				D2B8DD85283F51AC000391FB /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -76,6 +100,26 @@
 				D2B8DD6C283F5054000391FB /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		D2B8DD7B283F5064000391FB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D2B8DD7C283F5074000391FB /* User.swift */,
+				D2B8DD7F283F507B000391FB /* Team.swift */,
+				D2B8DD82283F5088000391FB /* Room.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D2B8DD8B283F52FD000391FB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D2B8DD8C283F5308000391FB /* DockView.swift */,
+				D2B8DD8F283F54B1000391FB /* RoomView.swift */,
+				D2B8DD92283F54F5000391FB /* UserAvatarView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,7 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B8DD71283F5054000391FB /* Assets.xcassets in Resources */,
+				D2B8DD86283F51AC000391FB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,7 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B8DD72283F5054000391FB /* Assets.xcassets in Resources */,
+				D2B8DD87283F51AC000391FB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,8 +220,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B8DD80283F507B000391FB /* Team.swift in Sources */,
+				D2B8DD90283F54B1000391FB /* RoomView.swift in Sources */,
 				D2B8DD6F283F5054000391FB /* ContentView.swift in Sources */,
 				D2B8DD6D283F5054000391FB /* RemotionSwiftUIApp.swift in Sources */,
+				D2B8DD7D283F5074000391FB /* User.swift in Sources */,
+				D2B8DD83283F5088000391FB /* Room.swift in Sources */,
+				D2B8DD89283F523F000391FB /* AppState.swift in Sources */,
+				D2B8DD93283F54F5000391FB /* UserAvatarView.swift in Sources */,
+				D2B8DD8D283F5308000391FB /* DockView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,8 +236,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B8DD81283F507B000391FB /* Team.swift in Sources */,
+				D2B8DD91283F54B1000391FB /* RoomView.swift in Sources */,
 				D2B8DD70283F5054000391FB /* ContentView.swift in Sources */,
 				D2B8DD6E283F5054000391FB /* RemotionSwiftUIApp.swift in Sources */,
+				D2B8DD7E283F5074000391FB /* User.swift in Sources */,
+				D2B8DD84283F5088000391FB /* Room.swift in Sources */,
+				D2B8DD8A283F523F000391FB /* AppState.swift in Sources */,
+				D2B8DD94283F54F5000391FB /* UserAvatarView.swift in Sources */,
+				D2B8DD8E283F5308000391FB /* DockView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,7 +365,7 @@
 		D2B8DD76283F5054000391FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-iOS";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -337,7 +395,7 @@
 		D2B8DD77283F5054000391FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-iOS";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
