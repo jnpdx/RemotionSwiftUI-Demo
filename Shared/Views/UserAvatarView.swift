@@ -30,14 +30,9 @@ struct UserAvatarView: View {
                            maxHeight: .infinity,
                            alignment: .bottomTrailing)
             )
-//            .onAppear {
-//                withAnimation(.easeInOut(duration: 0.5).repeatForever()) {
-//                    animationValue = 0.8
-//                }
-//                withAnimation(.easeInOut(duration: 0.1).repeatForever()) {
-//                    animationValue2 = -1
-//                }
-//            }
+            .onAppear {
+                startCallAction()
+            }
     }
     
     @ViewBuilder var availability: some View {
@@ -47,6 +42,17 @@ struct UserAvatarView: View {
             )
             .frame(width: 20,
                    height: 20)
+    }
+    
+    func startCallAction() {
+        guard user.isCalling else { return }
+        print("Starting call action for \(user)")
+        withAnimation(.easeInOut(duration: 0.5).repeatForever()) {
+            animationValue = 0.8
+        }
+        withAnimation(.easeInOut(duration: 0.1).repeatForever()) {
+            animationValue2 = -1
+        }
     }
     
     func colorForAvailability(_ availability: User.Availability) -> Color {

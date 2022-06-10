@@ -29,7 +29,7 @@ extension User {
     
     static func testUserSet(number: Int) -> [User] {
         return [
-            .init(name: "Alexander \(number)", avatar: User.randomAvatarImageName, availability: .active),
+            .init(name: "Alexander \(number)", avatar: User.randomAvatarImageName, availability: .active, isCalling: true),
             .init(name: "John \(number)",  avatar: User.randomAvatarImageName,availability: .active),
             .init(name: "Zak \(number)",  avatar: User.randomAvatarImageName,availability: .active),
             .init(name: "Fernando \(number)",  avatar: User.randomAvatarImageName,availability: .active),
