@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D23DA6532852D1490061CAE0 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DA6522852D1490061CAE0 /* Utility.swift */; };
+		D23DA6542852D1490061CAE0 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DA6522852D1490061CAE0 /* Utility.swift */; };
 		D2B8DD6D283F5054000391FB /* RemotionSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */; };
 		D2B8DD6E283F5054000391FB /* RemotionSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */; };
 		D2B8DD6F283F5054000391FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD5E283F5053000391FB /* ContentView.swift */; };
@@ -30,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D23DA6522852D1490061CAE0 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotionSwiftUIApp.swift; sourceTree = "<group>"; };
 		D2B8DD5E283F5053000391FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D2B8DD64283F5054000391FB /* RemotionSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemotionSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +81,7 @@
 				D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */,
 				D2B8DD5E283F5053000391FB /* ContentView.swift */,
 				D2B8DD88283F523E000391FB /* AppState.swift */,
+				D23DA6522852D1490061CAE0 /* Utility.swift */,
 				D2B8DD8B283F52FD000391FB /* Views */,
 				D2B8DD7B283F5064000391FB /* Models */,
 				D2B8DD85283F51AC000391FB /* Assets.xcassets */,
@@ -220,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23DA6532852D1490061CAE0 /* Utility.swift in Sources */,
 				D2B8DD80283F507B000391FB /* Team.swift in Sources */,
 				D2B8DD90283F54B1000391FB /* RoomView.swift in Sources */,
 				D2B8DD6F283F5054000391FB /* ContentView.swift in Sources */,
@@ -236,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23DA6542852D1490061CAE0 /* Utility.swift in Sources */,
 				D2B8DD81283F507B000391FB /* Team.swift in Sources */,
 				D2B8DD91283F54B1000391FB /* RoomView.swift in Sources */,
 				D2B8DD70283F5054000391FB /* ContentView.swift in Sources */,

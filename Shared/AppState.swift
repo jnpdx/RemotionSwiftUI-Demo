@@ -11,16 +11,7 @@ class AppState: ObservableObject {
     @Published var team: Team
     
     init() {
-        let users: [User] = [
-            .init(name: "Alexander", availability: .active),
-            .init(name: "John", availability: .active),
-            .init(name: "Zak", availability: .active),
-            .init(name: "Fernando", availability: .active),
-            .init(name: "Harriet", availability: .active),
-            .init(name: "Charley", availability: .active),
-            .init(name: "Angela", availability: .away),
-            .init(name: "TJ", availability: .away),
-        ]
+        let users: [User] = (1...10).map { User.testUserSet(number: $0) }.flatMap { $0 }
         let rooms: [Room] = [
             .init(name: "Coworking Lounge", color: .blue, users: [users.first!.id, users.last!.id]),
             .init(name: "Music", color: .green, users: []),

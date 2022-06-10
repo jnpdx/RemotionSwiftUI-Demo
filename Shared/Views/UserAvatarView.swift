@@ -15,7 +15,11 @@ struct UserAvatarView: View {
     
     var body: some View {
         Circle()
-            .frame(maxHeight: 120)
+            .overlay(
+                Image(user.avatar!)
+                    .resizable()
+                    .clipShape(Circle())
+            )
             .aspectRatio(1.0, contentMode: .fit)
             .scaleEffect(animationValue)
             .modifier(Shake(animatableData: animationValue2))
@@ -26,15 +30,14 @@ struct UserAvatarView: View {
                            maxHeight: .infinity,
                            alignment: .bottomTrailing)
             )
-            
-            .onAppear {
-                withAnimation(.easeInOut(duration: 0.5).repeatForever()) {
-                    animationValue = 0.8
-                }
-                withAnimation(.easeInOut(duration: 0.1).repeatForever()) {
-                    animationValue2 = -1
-                }
-            }
+//            .onAppear {
+//                withAnimation(.easeInOut(duration: 0.5).repeatForever()) {
+//                    animationValue = 0.8
+//                }
+//                withAnimation(.easeInOut(duration: 0.1).repeatForever()) {
+//                    animationValue2 = -1
+//                }
+//            }
     }
     
     @ViewBuilder var availability: some View {

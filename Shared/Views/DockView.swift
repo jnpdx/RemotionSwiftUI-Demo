@@ -22,9 +22,26 @@ struct DockView: View {
                         .frame(maxHeight: 120)
                 }
                 
-    //            ForEach(state.unPinnedRooms) { room in
-    //                RoomView(users: state.team.users, room: room)
-    //            }
+                RoundedRectangle(cornerRadius: 20)
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .frame(maxHeight: 120)
+                    .overlay(
+                        VStack {
+                            HStack {
+                                ForEach(Array(state.unPinnedRooms.safeSlice(beginning: 0, end: 2))) { room in
+                                    RoomView(users: state.team.users, room: room)
+                                }
+                            }
+                            .frame(maxHeight: 60)
+                            HStack {
+                                ForEach(Array(state.unPinnedRooms.safeSlice(beginning: 3, end: 4))) { room in
+                                    RoomView(users: state.team.users, room: room)
+                                }
+                            }
+                            .frame(maxHeight: 60)
+                        }
+                    )
+                
                 
                 Divider()
                 
