@@ -22,7 +22,9 @@ struct UserAvatarView: View {
             )
             .aspectRatio(1.0, contentMode: .fit)
             .scaleEffect(animationValue)
+            .animation(user.isCalling ? .easeInOut(duration: 0.5).repeatForever() : .default, value: animationValue)
             .modifier(Shake(animatableData: animationValue2))
+            .animation(user.isCalling ? .easeInOut(duration: 0.1).repeatForever() : .default, value: animationValue2)
             .overlay(
                 availability
                     .padding(10)
@@ -47,12 +49,8 @@ struct UserAvatarView: View {
     func startCallAction() {
         guard user.isCalling else { return }
         print("Starting call action for \(user)")
-        withAnimation(.easeInOut(duration: 0.5).repeatForever()) {
-            animationValue = 0.8
-        }
-        withAnimation(.easeInOut(duration: 0.1).repeatForever()) {
-            animationValue2 = -1
-        }
+        animationValue = 0.8
+        animationValue2 = -1
     }
     
     func colorForAvailability(_ availability: User.Availability) -> Color {
