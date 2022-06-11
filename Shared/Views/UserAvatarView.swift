@@ -33,7 +33,10 @@ struct UserAvatarView: View {
                            alignment: .bottomTrailing)
             )
             .onAppear {
-                startCallAction()
+                respondToCallState(user: user)
+            }
+            .onChange(of: user) { user in
+                respondToCallState(user: user)
             }
     }
     
@@ -46,11 +49,14 @@ struct UserAvatarView: View {
                    height: 20)
     }
     
-    func startCallAction() {
-        guard user.isCalling else { return }
-        print("Starting call action for \(user)")
-        animationValue = 0.8
-        animationValue2 = -1
+    func respondToCallState(user: User) {
+        if user.isCalling {
+            animationValue = 0.8
+            animationValue2 = -1
+        } else {
+            animationValue = 1.0
+            animationValue2 = 1.0
+        }
     }
     
     func colorForAvailability(_ availability: User.Availability) -> Color {

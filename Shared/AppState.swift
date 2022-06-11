@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import Combine
 
 class AppState: ObservableObject {
     @Published var team: Team
+    
+    private let simulator = StateSimulator()
     
     init() {
         let users: [User] = (1...10).map { User.testUserSet(number: $0) }.flatMap { $0 }
@@ -20,6 +23,7 @@ class AppState: ObservableObject {
             .init(id: UUID(), name: "Design Studio", avatar: nil, color: .white, users: [], isPinned: false)
         ]
         team = Team(users: users, rooms: rooms)
+        simulator.startSimulation(appState: self)
     }
     
     var pinnedRooms: [Room] {
@@ -34,5 +38,22 @@ class AppState: ObservableObject {
         team.users
             .filter { $0.isPinned }
             .sorted { $0.availability == .active && $1.availability != .active ? true : false }
+    }
+}
+
+class StateSimulator {
+    var cancelable: AnyCancellable?
+    
+    func startSimulation(appState: AppState) {
+        cancelable = Timer.publish(every: 2, on: .main, in: .common)
+            .autoconnect()
+            .sink(receiveValue: { _ in
+                guard var user = appState.team.users.randomElement() else {
+                    return
+                }
+                user.isCalling.toggle()
+                print("Setting \(user.id) to calling: \(user.isCalling)")
+                appState.team.users = appState.team.users.map { $0.id == user.id ? user : $0 }
+            })
     }
 }
