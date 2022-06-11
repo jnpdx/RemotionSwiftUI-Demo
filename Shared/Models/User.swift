@@ -17,7 +17,7 @@ struct User: Identifiable, Equatable, Hashable {
     var isCalling: Bool = false
     var isPinned: Bool = true
     
-    enum Availability {
+    enum Availability : CaseIterable {
         case active, focused, away
     }
 }

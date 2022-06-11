@@ -8,23 +8,25 @@
 import Foundation
 import SwiftUI
 
+var ITEM_HEIGHT: CGFloat = 80
+
 struct DockView: View {
     @ObservedObject var state: AppState
     
     var body: some View {
         ScrollView {
             VStack {
-                //user avatar
+                //TODO: user avatar
                 
                 //rooms
                 ForEach(state.pinnedRooms) { room in
-                    RoomView(users: state.team.users, room: room)
-                        .frame(maxHeight: 120)
+                    RoomView(users: state.team.users, room: room) // TODO: add call info
+                        .frame(maxHeight: ITEM_HEIGHT)
                 }
                 
                 RoundedRectangle(cornerRadius: 20)
                     .aspectRatio(1.0, contentMode: .fit)
-                    .frame(maxHeight: 120)
+                    .frame(maxHeight: ITEM_HEIGHT)
                     .overlay(
                         VStack {
                             HStack {
@@ -45,9 +47,12 @@ struct DockView: View {
                 
                 Divider()
                 
-                ForEach(state.pinnedUsers) { user in
-                    UserAvatarView(user: user)
-                        .frame(maxHeight: 120)
+                LazyVStack {
+                    ForEach(state.pinnedUsers) { user in
+                        
+                        UserAvatarView(user: user)
+                            .frame(maxHeight: ITEM_HEIGHT)
+                    }
                 }
                 
                 //pinned users

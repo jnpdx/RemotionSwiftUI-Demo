@@ -10,6 +10,7 @@ import SwiftUI
 struct RoomView: View {
     var users: [User]
     var room: Room
+    var roomCall: Call?
     
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
@@ -25,9 +26,9 @@ struct RoomView: View {
     }
     
     @ViewBuilder var userIndicator: some View {
-        if room.users.count != 0 {
+        if let roomCall = roomCall, !roomCall.users.isEmpty {
             VStack {
-                Text("\(room.users.count)")
+                Text("\(roomCall.users.count)")
                     .padding(8)
             }.background(
                 RoundedRectangle(cornerRadius: 8.0)
@@ -48,7 +49,6 @@ struct RoomView_Previews: PreviewProvider {
     static var previews: some View {
         RoomView(users: [],
                  room: Room(name: "",
-                            color: .blue,
-                            users: []))
+                            color: .blue))
     }
 }

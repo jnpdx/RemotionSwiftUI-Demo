@@ -45,8 +45,8 @@ struct UserAvatarView: View {
             .fill(
                 colorForAvailability(user.availability)
             )
-            .frame(width: 20,
-                   height: 20)
+            .frame(width: ITEM_HEIGHT / 5,
+                   height: ITEM_HEIGHT / 5)
     }
     
     func respondToCallState(user: User) {
@@ -95,6 +95,6 @@ struct UserAvatarView_Previews: PreviewProvider {
                                   availability: .active,
                                   isCalling: true,
                                   isPinned: true))
-            .frame(maxHeight: 120)
+            .frame(maxHeight: ITEM_HEIGHT)
     }
 }

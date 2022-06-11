@@ -14,6 +14,5 @@ struct Room: Identifiable {
     var avatar: String?
     var color: Color
     
-    var users: [UUID]
     var isPinned: Bool = true
 }
