@@ -30,9 +30,11 @@ struct RoomView: View {
             VStack {
                 Text("\(roomCall.users.count)")
                     .padding(8)
-            }.background(
+            }
+            .background(
                 RoundedRectangle(cornerRadius: 8.0)
                     .fill(Color.white)
+                    .aspectRatio(1.0, contentMode: .fit)
             )
             
                 .padding(4)

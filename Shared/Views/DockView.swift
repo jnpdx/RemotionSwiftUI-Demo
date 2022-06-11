@@ -20,7 +20,10 @@ struct DockView: View {
                 
                 //rooms
                 ForEach(state.pinnedRooms) { room in
-                    RoomView(users: state.team.users, room: room) // TODO: add call info
+                    RoomView(users: state.team.users,
+                             room: room,
+                             roomCall: state.team.calls.first(where: { $0.roomID == room.id })
+                    )
                 }.frame(width: ITEM_HEIGHT)
                 
                 RoundedRectangle(cornerRadius: 20)
