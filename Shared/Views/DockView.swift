@@ -47,9 +47,9 @@ struct DockView: View {
                 
                 Divider()
                 
+                // Converting to a plain `VStack` seems to solve the issues getting stuck
                 LazyVStack {
                     ForEach(state.pinnedUsers) { user in
-                        
                         UserAvatarView(user: user)
                             .frame(maxHeight: ITEM_HEIGHT)
                     }
