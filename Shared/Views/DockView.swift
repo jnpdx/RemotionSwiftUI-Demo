@@ -21,12 +21,11 @@ struct DockView: View {
                 //rooms
                 ForEach(state.pinnedRooms) { room in
                     RoomView(users: state.team.users, room: room) // TODO: add call info
-                        .frame(maxHeight: ITEM_HEIGHT)
-                }
+                }.frame(width: ITEM_HEIGHT)
                 
                 RoundedRectangle(cornerRadius: 20)
                     .aspectRatio(1.0, contentMode: .fit)
-                    .frame(maxHeight: ITEM_HEIGHT)
+                    .frame(width: ITEM_HEIGHT)
                     .overlay(
                         VStack {
                             HStack {
