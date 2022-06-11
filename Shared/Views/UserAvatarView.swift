@@ -19,19 +19,19 @@ struct UserAvatarView: View {
                 Image(user.avatar!)
                     .resizable()
                     .clipShape(Circle())
+                    .overlay(
+                        availability
+                            .padding(10)
+                            .frame(maxWidth: .infinity,
+                                   maxHeight: .infinity,
+                                   alignment: .bottomTrailing)
+                    )
             )
             .aspectRatio(1.0, contentMode: .fit)
             .scaleEffect(animationValue)
             .animation(user.isCalling ? .easeInOut(duration: 0.5).repeatForever() : .default, value: animationValue)
             .modifier(Shake(animatableData: animationValue2))
             .animation(user.isCalling ? .easeInOut(duration: 0.1).repeatForever() : .default, value: animationValue2)
-            .overlay(
-                availability
-                    .padding(10)
-                    .frame(maxWidth: .infinity,
-                           maxHeight: .infinity,
-                           alignment: .bottomTrailing)
-            )
             .onAppear {
                 respondToCallState(user: user)
             }
@@ -41,12 +41,14 @@ struct UserAvatarView: View {
     }
     
     @ViewBuilder var availability: some View {
-        Circle()
-            .fill(
-                colorForAvailability(user.availability)
-            )
-            .frame(width: ITEM_HEIGHT / 5,
-                   height: ITEM_HEIGHT / 5)
+        GeometryReader { proxy in
+            Circle()
+                .fill(
+                    colorForAvailability(user.availability)
+                )
+                .frame(width: proxy.size.width / 5,
+                       height: proxy.size.height / 5)
+        }
     }
     
     func respondToCallState(user: User) {
