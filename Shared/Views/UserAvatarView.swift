@@ -10,22 +10,36 @@ import SwiftUI
 struct UserAvatarView: View {
     var user: User
     
+    var inCallWithUsers: [User]
+    
     @State private var animationValue: CGFloat = 1.0
     @State private var animationValue2: CGFloat = 1.0
     
     var body: some View {
         Circle()
             .overlay(
-                Image(user.avatar!)
-                    .resizable()
-                    .clipShape(Circle())
-                    .overlay(
-                        availability
-                            .padding(10)
-                            .frame(maxWidth: .infinity,
-                                   maxHeight: .infinity,
-                                   alignment: .bottomTrailing)
-                    )
+                ZStack {
+                    Image(user.avatar!)
+                        .resizable()
+                        .clipShape(Circle())
+                        .overlay(
+                            availability
+                                .padding(10)
+                                .frame(maxWidth: .infinity,
+                                       maxHeight: .infinity,
+                                       alignment: .bottomTrailing)
+                        )
+                    HStack {
+                        ForEach(inCallWithUsers) { otherUser in
+                            Image(otherUser.avatar!)
+                                .resizable()
+                                .clipShape(Circle())
+                                .frame(width: 20, height: 20)
+                                .shadow(radius: 4.0)
+                        }
+                    }
+                }
+                
             )
             .aspectRatio(1.0, contentMode: .fit)
             .scaleEffect(animationValue)
@@ -96,7 +110,7 @@ struct UserAvatarView_Previews: PreviewProvider {
                                   pronouns: nil,
                                   availability: .active,
                                   isCalling: true,
-                                  isPinned: true))
+                                  isPinned: true), inCallWithUsers: [])
             .frame(maxHeight: ITEM_HEIGHT)
     }
 }

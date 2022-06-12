@@ -15,7 +15,7 @@ class AppState: ObservableObject {
     private let simulator = StateSimulator()
     
     init() {
-        let users: [User] = (1...2).map { User.testUserSet(number: $0) }.flatMap { $0 }
+        let users: [User] = (1...1).map { User.testUserSet(number: $0) }.flatMap { $0 }
         let rooms: [Room] = [
             .init(name: "Coworking Lounge", color: .blue),
             .init(name: "Music", color: .green),
@@ -42,6 +42,34 @@ class AppState: ObservableObject {
         team.users
             .filter { $0.isPinned }
             .sorted { $0.availability == .active && $1.availability != .active ? true : false }
+    }
+}
+
+extension AppState {
+    func userForID(_ userID: UUID) -> User? {
+        team.users.first { user in
+            user.id == userID
+        }
+    }
+    
+    func callForUser(userID: UUID) -> Call? {
+        team.calls.first { call in
+            call.users.contains(userID)
+        }
+    }
+    
+    func inCallWithUsers(forUserID userID: UUID) -> [User] {
+        guard let call = callForUser(userID: userID) else {
+            return []
+        }
+        return usersInCall(callID: call.id)
+    }
+    
+    func usersInCall(callID: UUID) -> [User] {
+        guard let call = team.calls.first(where: { $0.id == callID }) else {
+            return []
+        }
+        return call.users.compactMap { userForID($0) }
     }
 }
 
