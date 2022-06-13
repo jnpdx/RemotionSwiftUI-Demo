@@ -13,6 +13,8 @@
 		D23DA68D2854559D0061CAE0 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DA68B2854559D0061CAE0 /* Call.swift */; };
 		D23DA68F2855582D0061CAE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23DA68E2855582D0061CAE0 /* Assets.xcassets */; };
 		D23DA6902855582D0061CAE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23DA68E2855582D0061CAE0 /* Assets.xcassets */; };
+		D23DA6972857F7250061CAE0 /* StateSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DA6962857F7250061CAE0 /* StateSimulator.swift */; };
+		D23DA6982857F7250061CAE0 /* StateSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DA6962857F7250061CAE0 /* StateSimulator.swift */; };
 		D2B8DD6D283F5054000391FB /* RemotionSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */; };
 		D2B8DD6E283F5054000391FB /* RemotionSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */; };
 		D2B8DD6F283F5054000391FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD5E283F5053000391FB /* ContentView.swift */; };
@@ -37,6 +39,7 @@
 		D23DA6522852D1490061CAE0 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		D23DA68B2854559D0061CAE0 /* Call.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
 		D23DA68E2855582D0061CAE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D23DA6962857F7250061CAE0 /* StateSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateSimulator.swift; sourceTree = "<group>"; };
 		D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotionSwiftUIApp.swift; sourceTree = "<group>"; };
 		D2B8DD5E283F5053000391FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D2B8DD64283F5054000391FB /* RemotionSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemotionSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +88,7 @@
 				D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */,
 				D2B8DD5E283F5053000391FB /* ContentView.swift */,
 				D2B8DD88283F523E000391FB /* AppState.swift */,
+				D23DA6962857F7250061CAE0 /* StateSimulator.swift */,
 				D23DA6522852D1490061CAE0 /* Utility.swift */,
 				D2B8DD8B283F52FD000391FB /* Views */,
 				D2B8DD7B283F5064000391FB /* Models */,
@@ -228,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23DA6972857F7250061CAE0 /* StateSimulator.swift in Sources */,
 				D23DA6532852D1490061CAE0 /* Utility.swift in Sources */,
 				D2B8DD80283F507B000391FB /* Team.swift in Sources */,
 				D2B8DD90283F54B1000391FB /* RoomView.swift in Sources */,
@@ -246,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23DA6982857F7250061CAE0 /* StateSimulator.swift in Sources */,
 				D23DA6542852D1490061CAE0 /* Utility.swift in Sources */,
 				D2B8DD81283F507B000391FB /* Team.swift in Sources */,
 				D2B8DD91283F54B1000391FB /* RoomView.swift in Sources */,
