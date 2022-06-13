@@ -15,7 +15,7 @@ class AppState: ObservableObject {
     private let simulator = StateSimulator()
     
     init() {
-        let users: [User] = (1...1).map { User.testUserSet(number: $0) }.flatMap { $0 }
+        let users: [User] = (1...20).map { User.testUserSet(number: $0) }.flatMap { $0 }
         let rooms: [Room] = [
             .init(name: "Coworking Lounge", color: .blue),
             .init(name: "Music", color: .green),

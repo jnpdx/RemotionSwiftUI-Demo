@@ -15,6 +15,29 @@ struct UserAvatarView: View {
     @State private var animationValue: CGFloat = 1.0
     @State private var animationValue2: CGFloat = 1.0
     
+    enum OtherUser: Identifiable {
+        case user(User)
+        case number(Int)
+        
+        var id: UUID {
+            switch self {
+            case .user(let user):
+                return user.id
+            case .number:
+                return UUID()
+            }
+        }
+    }
+    
+    var otherUsersDisplay: [OtherUser] {
+        if inCallWithUsers.count > 2 {
+            var usersToDisplay = inCallWithUsers[0...1].map { OtherUser.user($0) }
+            usersToDisplay.append(OtherUser.number(inCallWithUsers.count - 2))
+            return usersToDisplay
+        }
+        return inCallWithUsers.map { OtherUser.user($0) }
+    }
+    
     var body: some View {
         Circle()
             .overlay(
@@ -22,6 +45,7 @@ struct UserAvatarView: View {
                     Image(user.avatar!)
                         .resizable()
                         .clipShape(Circle())
+                        .aspectRatio(1.0, contentMode: .fit)
                         .overlay(
                             availability
                                 .padding(10)
@@ -30,12 +54,18 @@ struct UserAvatarView: View {
                                        alignment: .bottomTrailing)
                         )
                     HStack {
-                        ForEach(inCallWithUsers) { otherUser in
-                            Image(otherUser.avatar!)
-                                .resizable()
-                                .clipShape(Circle())
-                                .frame(width: 20, height: 20)
-                                .shadow(radius: 4.0)
+                        ForEach(otherUsersDisplay) { otherUser in
+                            switch otherUser {
+                            case .user(let user):
+                                Image(user.avatar!)
+                                    .resizable()
+                                    .clipShape(Circle())
+                                    .frame(width: 20, height: 20)
+                                    .shadow(radius: 4.0)
+                            case .number(let number):
+                                Text("\(number)")
+                                    .background(Circle().fill(.white)                                    .frame(width: 20, height: 20))
+                            }
                         }
                     }
                 }
