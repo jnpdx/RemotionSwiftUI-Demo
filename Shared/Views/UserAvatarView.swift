@@ -44,18 +44,17 @@ struct UserAvatarView: View {
                         .resizable()
                         .clipShape(Circle())
                         .aspectRatio(1.0, contentMode: .fit)
-                        .overlay(
-                            availability
-                                .padding(10)
-                                .frame(maxWidth: .infinity,
-                                       maxHeight: .infinity,
-                                       alignment: .bottomTrailing)
-                        )
                         .opacity(user.availability == .away ? 0.4 : 1.0)
                         .saturation(user.availability == .away ? 0.1 : 1.0)
                         .onHover(perform: { hovering in
                             userInfoShown = hovering
                         })
+                    HStack {
+                        availability
+                            .frame(width: 20, height: 20)
+                            .padding(2)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                     HStack {
                         ForEach(otherUsersDisplay) { otherUser in
                             VStack {
@@ -102,15 +101,11 @@ struct UserAvatarView: View {
     }
     
     @ViewBuilder var availability: some View {
-        GeometryReader { proxy in
-            if inCallWithUsers.isEmpty {
-                Circle()
-                    .fill(
-                        colorForAvailability(user.availability)
-                    )
-                    .frame(width: proxy.size.width / 5,
-                           height: proxy.size.height / 5)
-            }
+        if inCallWithUsers.isEmpty {
+            Circle()
+                .fill(
+                    colorForAvailability(user.availability)
+                )
         }
     }
     
@@ -143,19 +138,21 @@ struct CallingSignalView : View {
 
 struct UserAvatarView_Previews: PreviewProvider {
     static var previews: some View {
+        let otherUsers = [
+            User(id: UUID(), name: "A", avatar: User.randomAvatarImageName, status: nil, pronouns: nil, availability: .active, isCalling: false, isPinned: false),
+            User(id: UUID(), name: "A", avatar: User.randomAvatarImageName, status: nil, pronouns: nil, availability: .active, isCalling: false, isPinned: false),
+            User(id: UUID(), name: "A", avatar: User.randomAvatarImageName, status: nil, pronouns: nil, availability: .active, isCalling: false, isPinned: false)
+           ]
+        
         UserAvatarView(user: User(id: UUID(),
                                   name: "Fernando",
                                   avatar: User.randomAvatarImageName,
                                   status: nil,
                                   pronouns: nil,
-                                  availability: .away,
+                                  availability: .active,
                                   isCalling: false,
                                   isPinned: true),
-                       inCallWithUsers: [
-                        User(id: UUID(), name: "A", avatar: User.randomAvatarImageName, status: nil, pronouns: nil, availability: .active, isCalling: false, isPinned: false),
-                        User(id: UUID(), name: "A", avatar: User.randomAvatarImageName, status: nil, pronouns: nil, availability: .active, isCalling: false, isPinned: false),
-                        User(id: UUID(), name: "A", avatar: User.randomAvatarImageName, status: nil, pronouns: nil, availability: .active, isCalling: false, isPinned: false)
-                       ])
+                       inCallWithUsers: otherUsers)
             .frame(maxHeight: ITEM_HEIGHT)
             .border(Color.blue)
     }
