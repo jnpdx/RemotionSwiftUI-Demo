@@ -51,6 +51,11 @@ struct UserAvatarView: View {
                                        maxHeight: .infinity,
                                        alignment: .bottomTrailing)
                         )
+                        .opacity(user.availability == .away ? 0.4 : 1.0)
+                        .saturation(user.availability == .away ? 0.1 : 1.0)
+                        .onHover(perform: { hovering in
+                            userInfoShown = hovering
+                        })
                     HStack {
                         ForEach(otherUsersDisplay) { otherUser in
                             VStack {
@@ -76,13 +81,8 @@ struct UserAvatarView: View {
                         CallingSignalView()
                     }
                 }
-                
             )
             .aspectRatio(1.0, contentMode: .fit)
-            .opacity(user.availability == .away ? 0.3 : 1.0)
-            .onHover(perform: { hovering in
-                userInfoShown = hovering
-            })
             .popover(isPresented: $userInfoShown, arrowEdge: .leading) {
                 VStack(alignment: .leading) {
                     Text(user.name)
@@ -148,8 +148,8 @@ struct UserAvatarView_Previews: PreviewProvider {
                                   avatar: User.randomAvatarImageName,
                                   status: nil,
                                   pronouns: nil,
-                                  availability: .active,
-                                  isCalling: true,
+                                  availability: .away,
+                                  isCalling: false,
                                   isPinned: true),
                        inCallWithUsers: [
                         User(id: UUID(), name: "A", avatar: User.randomAvatarImageName, status: nil, pronouns: nil, availability: .active, isCalling: false, isPinned: false),

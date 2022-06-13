@@ -16,6 +16,7 @@ class StateSimulator {
         case toggleCalling
         case joinRoom
         case joinCall
+        case leaveCall
         case toggleAvailability
     }
     
@@ -48,6 +49,9 @@ class StateSimulator {
                 switch action {
                 case .toggleCalling:
                     user.isCalling.toggle()
+                    if user.isCalling {
+                        user.availability = .active
+                    }
                 case .joinRoom:
                     guard let randomRoom = team.rooms.randomElement() else {
                         break
@@ -72,7 +76,18 @@ class StateSimulator {
                         team.calls.append(call)
                     }
                     user.availability = .active
-                    
+                case .leaveCall:
+                    guard let randomUser = team.users.randomElement() else {
+                        break
+                    }
+                    team.calls = team.calls.map { call in
+                        if call.users.contains(user.id) || call.users.contains(randomUser.id) {
+                            var copy = call
+                            copy.users.removeAll(where: { $0 == user.id || $0 == randomUser.id })
+                            return copy
+                        }
+                        return call
+                    }
                 case .joinCall:
                     guard let randomUser = team.users.randomElement() else {
                         break
@@ -93,6 +108,9 @@ class StateSimulator {
                     
                 case .toggleAvailability:
                     user.availability = User.Availability.allCases.randomElement()!
+                    if user.availability != .active {
+                        user.isCalling = false
+                    }
                 }
                 
                 team.users = team.users.map { $0.id == user.id ? user : $0 }
