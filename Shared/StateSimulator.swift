@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class StateSimulator {
     var cancelable: AnyCancellable?
@@ -47,7 +48,6 @@ class StateSimulator {
                 switch action {
                 case .toggleCalling:
                     user.isCalling.toggle()
-                    print("Setting \(user.id) to calling: \(user.isCalling)")
                 case .joinRoom:
                     guard let randomRoom = team.rooms.randomElement() else {
                         break

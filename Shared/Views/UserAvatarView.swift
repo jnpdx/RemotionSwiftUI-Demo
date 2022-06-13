@@ -62,7 +62,7 @@ struct UserAvatarView: View {
                                 case .number(let number):
                                     Text("\(number)")
                                         .frame(width: 20, height: 20)
-                                        .background(Circle().fill(.white) .shadow(radius: 4.0)                                   )
+                                        .background(Circle().fill(.white) .shadow(radius: 4.0))
                                 }
                             }
                         }

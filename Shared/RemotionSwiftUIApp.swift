@@ -11,7 +11,12 @@ import SwiftUI
 struct RemotionSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
+            #if os(macOS)
             ContentView()
+                .frame(width: 200, height: 800)
+            #else
+            ContentView()
+            #endif
         }
     }
 }
