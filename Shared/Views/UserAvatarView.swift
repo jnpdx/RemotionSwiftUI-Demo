@@ -46,9 +46,9 @@ struct UserAvatarView: View {
                         .aspectRatio(1.0, contentMode: .fit)
                         .opacity(user.availability == .away ? 0.4 : 1.0)
                         .saturation(user.availability == .away ? 0.1 : 1.0)
-                        .onHover(perform: { hovering in
-                            userInfoShown = hovering
-                        })
+                        .onTapGesture {
+                            userInfoShown.toggle()
+                        }
                     HStack {
                         availability
                             .frame(width: 20, height: 20)

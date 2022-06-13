@@ -30,11 +30,11 @@ class AppState: ObservableObject {
     var pinnedUsers: [User] {
         team.users
             .filter { $0.isPinned }
-            .sorted {
-                if $0.availability == .active && $1.availability != .active {
+            .sorted { a, b in
+                if a.availability == .active && b.availability != .active {
                     return true
                 }
-                if $0.availability == .focused && $1.availability == .away {
+                if a.availability == .focused && b.availability == .away {
                     return true
                 }
                 return false

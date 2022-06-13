@@ -21,7 +21,7 @@ class StateSimulator {
     }
     
     static func generateSampleTeam() -> Team {
-        let users: [User] = (1...1).map { User.testUserSet(number: $0) }.flatMap { $0 }
+        let users: [User] = (1...40).map { User.testUserSet(number: $0) }.flatMap { $0 }
         let rooms: [Room] = [
             .init(name: "Coworking Lounge", color: .blue),
             .init(name: "Music", color: .green),
@@ -57,15 +57,7 @@ class StateSimulator {
                         break
                     }
                     
-                    // remove the user from any other calls
-                    team.calls = team.calls.map { call in
-                        if call.users.contains(user.id) {
-                            var copy = call
-                            copy.users.removeAll(where: { $0 == user.id })
-                            return copy
-                        }
-                        return call
-                    }
+                    self.removeUserFromAllCalls(team: &team, userID: user.id)
                     
                     // is there already a call
                     if var call = team.calls.first(where: { $0.roomID == randomRoom.id }) {
@@ -77,37 +69,26 @@ class StateSimulator {
                     }
                     user.availability = .active
                 case .leaveCall:
-                    guard let randomUser = team.users.randomElement() else {
-                        break
-                    }
-                    team.calls = team.calls.map { call in
-                        if call.users.contains(user.id) || call.users.contains(randomUser.id) {
-                            var copy = call
-                            copy.users.removeAll(where: { $0 == user.id || $0 == randomUser.id })
-                            return copy
-                        }
-                        return call
-                    }
+                    self.removeUserFromAllCalls(team: &team, userID: user.id)
                 case .joinCall:
                     guard let randomUser = team.users.randomElement() else {
                         break
                     }
                     
-                    // remove the users from any other calls
-                    team.calls = team.calls.map { call in
-                        if call.users.contains(user.id) || call.users.contains(randomUser.id) {
-                            var copy = call
-                            copy.users.removeAll(where: { $0 == user.id || $0 == randomUser.id })
-                            return copy
-                        }
-                        return call
-                    }
+                    self.removeUserFromAllCalls(team: &team, userID: user.id)
+                    self.removeUserFromAllCalls(team: &team, userID:randomUser.id)
                     
                     team.calls.append(Call(id: UUID(), users: [user.id, randomUser.id], roomID: nil))
                     user.availability = .active
                     
                 case .toggleAvailability:
                     user.availability = User.Availability.allCases.randomElement()!
+                    
+                    if user.availability == .away {
+                        // remove the users from any other calls
+                        self.removeUserFromAllCalls(team: &team, userID: user.id)
+                    }
+                    
                     if user.availability != .active {
                         user.isCalling = false
                     }
@@ -121,6 +102,17 @@ class StateSimulator {
                     appState.team = newState
                 }
             })
+    }
+    
+    func removeUserFromAllCalls(team: inout Team, userID: UUID) {
+        team.calls = team.calls.map { call in
+            if call.users.contains(userID) {
+                var copy = call
+                copy.users.removeAll(where: { $0 == userID })
+                return copy
+            }
+            return call
+        }
     }
 }
 
