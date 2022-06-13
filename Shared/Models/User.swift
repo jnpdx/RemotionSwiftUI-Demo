@@ -21,23 +21,3 @@ struct User: Identifiable, Equatable, Hashable {
         case active, focused, away
     }
 }
-
-extension User {
-    static var randomAvatarImageName: String {
-        "Avatar-\((1...9).randomElement()!)"
-    }
-    
-    static func testUserSet(number: Int) -> [User] {
-        return [
-            .init(name: "Alexander \(number)", avatar: User.randomAvatarImageName, availability: .active, isCalling: false),
-            .init(name: "John \(number)",  avatar: User.randomAvatarImageName,availability: .active),
-            .init(name: "Zak \(number)",  avatar: User.randomAvatarImageName,availability: .active),
-            .init(name: "Fernando \(number)",  avatar: User.randomAvatarImageName,availability: .active),
-            .init(name: "Harriet \(number)",  avatar: User.randomAvatarImageName,availability: .active),
-            .init(name: "Kay-Anne \(number)",  avatar: User.randomAvatarImageName,availability: .active),
-            .init(name: "Charley \(number)",  avatar: User.randomAvatarImageName,availability: .active),
-            .init(name: "Angela \(number)",  avatar: User.randomAvatarImageName,availability: .away),
-            .init(name: "TJ \(number)",  avatar: User.randomAvatarImageName,availability: .away),
-        ]
-    }
-}

@@ -11,6 +11,8 @@ struct UserAvatarView: View {
     var user: User
     var inCallWithUsers: [User]
 
+    @State private var userInfoShown = false
+    
     enum OtherUser: Identifiable {
         case user(User)
         case number(Int)
@@ -78,6 +80,25 @@ struct UserAvatarView: View {
             )
             .aspectRatio(1.0, contentMode: .fit)
             .opacity(user.availability == .away ? 0.3 : 1.0)
+            .onHover(perform: { hovering in
+                userInfoShown = hovering
+            })
+            .popover(isPresented: $userInfoShown, arrowEdge: .leading) {
+                VStack(alignment: .leading) {
+                    Text(user.name)
+                        .fontWeight(.bold)
+                    if let pronouns = user.pronouns {
+                        Text(pronouns)
+                    }
+                    if !inCallWithUsers.isEmpty {
+                        VStack(alignment: .leading) {
+                            Text("In a call with: ")
+                            Text(inCallWithUsers.map(\.name), format: .list(type: .and))
+                        }
+                    }
+                }
+                .padding()
+            }
     }
     
     @ViewBuilder var availability: some View {
