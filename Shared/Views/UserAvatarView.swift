@@ -9,12 +9,8 @@ import SwiftUI
 
 struct UserAvatarView: View {
     var user: User
-    
     var inCallWithUsers: [User]
-    
-    @State private var animationValue: CGFloat = 1.0
-    @State private var animationValue2: CGFloat = 1.0
-    
+
     enum OtherUser: Identifiable {
         case user(User)
         case number(Int)
@@ -68,20 +64,15 @@ struct UserAvatarView: View {
                             }
                         }
                     }
+                    
+                    if user.isCalling {
+                        // show the calling signal
+                        CallingSignalView()
+                    }
                 }
                 
             )
             .aspectRatio(1.0, contentMode: .fit)
-            .scaleEffect(animationValue)
-            .animation(user.isCalling ? .easeInOut(duration: 0.5).repeatForever() : .default, value: animationValue)
-            .modifier(Shake(animatableData: animationValue2))
-            .animation(user.isCalling ? .easeInOut(duration: 0.1).repeatForever() : .default, value: animationValue2)
-            .onAppear {
-                respondToCallState(user: user)
-            }
-            .onChange(of: user) { user in
-                respondToCallState(user: user)
-            }
     }
     
     @ViewBuilder var availability: some View {
@@ -92,16 +83,6 @@ struct UserAvatarView: View {
                 )
                 .frame(width: proxy.size.width / 5,
                        height: proxy.size.height / 5)
-        }
-    }
-    
-    func respondToCallState(user: User) {
-        if user.isCalling {
-            animationValue = 0.8
-            animationValue2 = -1
-        } else {
-            animationValue = 1.0
-            animationValue2 = 1.0
         }
     }
     
@@ -117,17 +98,18 @@ struct UserAvatarView: View {
     }
 }
 
-struct Shake: GeometryEffect {
-    var amount: CGFloat = 10
-    var shakesPerUnit = 3
-    var animatableData: CGFloat
-
-    func effectValue(size: CGSize) -> ProjectionTransform {
-        ProjectionTransform(
-            CGAffineTransform(translationX:
-            amount * animatableData,
-            y: 0)
-        )
+struct CallingSignalView : View {
+    @State private var scale: CGFloat = 1.0
+    
+    var body: some View {
+        Circle()
+            .fill(Color.red.opacity(0.5))
+            .scaleEffect(scale)
+            .onAppear {
+                withAnimation(.easeInOut.repeatForever(autoreverses: true)) {
+                    scale = 0.0
+                }
+            }
     }
 }
 
