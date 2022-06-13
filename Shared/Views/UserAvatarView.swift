@@ -46,9 +46,11 @@ struct UserAvatarView: View {
                         .aspectRatio(1.0, contentMode: .fit)
                         .opacity(user.availability == .away ? 0.4 : 1.0)
                         .saturation(user.availability == .away ? 0.1 : 1.0)
-                        .onTapGesture {
-                            userInfoShown.toggle()
-                        }
+                        .overlay(
+                            Circle()
+                                .strokeBorder(user.isTalking ? .red : .clear,
+                                              lineWidth: user.isTalking ? 4 : 0)
+                        )
                     HStack {
                         availability
                             .frame(width: 20, height: 20)
@@ -65,6 +67,11 @@ struct UserAvatarView: View {
                                         .clipShape(Circle())
                                         .frame(width: 20, height: 20)
                                         .shadow(radius: 4.0)
+                                        .overlay(
+                                            Circle()
+                                                .strokeBorder(user.isTalking ? .red : .clear,
+                                                              lineWidth: user.isTalking ? 1 : 0)
+                                        )
                                 case .number(let number):
                                     Text("\(number)")
                                         .frame(width: 20, height: 20)
@@ -82,6 +89,9 @@ struct UserAvatarView: View {
                 }
             )
             .aspectRatio(1.0, contentMode: .fit)
+            .onTapGesture {
+                userInfoShown.toggle()
+            }
             .popover(isPresented: $userInfoShown, arrowEdge: .leading) {
                 VStack(alignment: .leading) {
                     Text(user.name)

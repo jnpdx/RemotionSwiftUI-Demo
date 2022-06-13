@@ -15,6 +15,7 @@ struct User: Identifiable, Equatable, Hashable {
     var pronouns: String?
     var availability: Availability
     var isCalling: Bool = false
+    var isTalking: Bool = false
     var isPinned: Bool = true
     
     enum Availability : CaseIterable {

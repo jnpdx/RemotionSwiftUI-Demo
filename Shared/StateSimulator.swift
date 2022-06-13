@@ -18,10 +18,11 @@ class StateSimulator {
         case joinCall
         case leaveCall
         case toggleAvailability
+        case toggleTalking
     }
     
     static func generateSampleTeam() -> Team {
-        let users: [User] = (1...40).map { User.testUserSet(number: $0) }.flatMap { $0 }
+        let users: [User] = (1...1).map { User.testUserSet(number: $0) }.flatMap { $0 }
         let rooms: [Room] = [
             .init(name: "Coworking Lounge", color: .blue),
             .init(name: "Music", color: .green),
@@ -47,6 +48,10 @@ class StateSimulator {
                 let action = Actions.allCases.randomElement()!
                 
                 switch action {
+                case .toggleTalking:
+                    if team.calls.contains(where: { call in call.users.contains(user.id) }) {
+                        user.isTalking.toggle()
+                    }
                 case .toggleCalling:
                     user.isCalling.toggle()
                     if user.isCalling {
@@ -70,6 +75,7 @@ class StateSimulator {
                     user.availability = .active
                 case .leaveCall:
                     self.removeUserFromAllCalls(team: &team, userID: user.id)
+                    user.isTalking = false
                 case .joinCall:
                     guard let randomUser = team.users.randomElement() else {
                         break
@@ -91,6 +97,7 @@ class StateSimulator {
                     
                     if user.availability != .active {
                         user.isCalling = false
+                        user.isTalking = false
                     }
                 }
                 

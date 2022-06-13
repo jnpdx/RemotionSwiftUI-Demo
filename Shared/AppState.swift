@@ -59,7 +59,7 @@ extension AppState {
         guard let call = callForUser(userID: userID) else {
             return []
         }
-        return usersInCall(callID: call.id)
+        return usersInCall(callID: call.id).filter { $0.id != userID }
     }
     
     func usersInCall(callID: UUID) -> [User] {
