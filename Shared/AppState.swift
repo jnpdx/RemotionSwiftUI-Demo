@@ -68,4 +68,11 @@ extension AppState {
         }
         return call.users.compactMap { userForID($0) }
     }
+    
+    func usersInRoom(roomID: UUID) -> [User] {
+        guard let call = team.calls.first(where: { $0.roomID == roomID }) else {
+            return []
+        }
+        return call.users.compactMap { userForID($0) }
+    }
 }

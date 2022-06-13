@@ -10,8 +10,9 @@ import SwiftUI
 struct RoomView: View {
     var users: [User]
     var room: Room
-    var roomCall: Call?
     
+    @State private var roomInfoShown = false
+
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
             .fill(
@@ -23,12 +24,27 @@ struct RoomView: View {
             .overlay(
                 userIndicator
             )
+            .onHover(perform: { hovering in
+                roomInfoShown = hovering
+            })
+            .popover(isPresented: $roomInfoShown, arrowEdge: .leading) {
+                VStack(alignment: .leading) {
+                    Text(room.name)
+                        .fontWeight(.bold)
+                    if !users.isEmpty {
+                        VStack(alignment: .leading) {
+                            Text(users.map(\.name), format: .list(type: .and))
+                        }
+                    }
+                }
+                .padding()
+            }
     }
     
     @ViewBuilder var userIndicator: some View {
-        if let roomCall = roomCall, !roomCall.users.isEmpty {
+        if !users.isEmpty {
             VStack {
-                Text("\(roomCall.users.count)")
+                Text("\(users.count)")
                     .padding(8)
             }
             .background(

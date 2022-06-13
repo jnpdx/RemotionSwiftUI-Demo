@@ -20,9 +20,8 @@ struct DockView: View {
                 
                 //rooms
                 ForEach(state.pinnedRooms) { room in
-                    RoomView(users: state.team.users,
-                             room: room,
-                             roomCall: state.team.calls.first(where: { $0.roomID == room.id })
+                    RoomView(users: state.usersInRoom(roomID: room.id),
+                             room: room
                     )
                 }.frame(width: ITEM_HEIGHT)
                 
@@ -33,13 +32,13 @@ struct DockView: View {
                         VStack {
                             HStack {
                                 ForEach(Array(state.unPinnedRooms.safeSlice(beginning: 0, end: 2))) { room in
-                                    RoomView(users: state.team.users, room: room)
+                                    RoomView(users: state.usersInRoom(roomID: room.id), room: room)
                                 }
                             }
                             .frame(maxHeight: 60)
                             HStack {
                                 ForEach(Array(state.unPinnedRooms.safeSlice(beginning: 3, end: 4))) { room in
-                                    RoomView(users: state.team.users, room: room)
+                                    RoomView(users: state.usersInRoom(roomID: room.id), room: room)
                                 }
                             }
                             .frame(maxHeight: 60)

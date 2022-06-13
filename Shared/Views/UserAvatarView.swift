@@ -103,12 +103,14 @@ struct UserAvatarView: View {
     
     @ViewBuilder var availability: some View {
         GeometryReader { proxy in
-            Circle()
-                .fill(
-                    colorForAvailability(user.availability)
-                )
-                .frame(width: proxy.size.width / 5,
-                       height: proxy.size.height / 5)
+            if inCallWithUsers.isEmpty {
+                Circle()
+                    .fill(
+                        colorForAvailability(user.availability)
+                    )
+                    .frame(width: proxy.size.width / 5,
+                           height: proxy.size.height / 5)
+            }
         }
     }
     
