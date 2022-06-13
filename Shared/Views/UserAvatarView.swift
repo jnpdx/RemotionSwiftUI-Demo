@@ -51,19 +51,23 @@ struct UserAvatarView: View {
                         )
                     HStack {
                         ForEach(otherUsersDisplay) { otherUser in
-                            switch otherUser {
-                            case .user(let user):
-                                Image(user.avatar!)
-                                    .resizable()
-                                    .clipShape(Circle())
-                                    .frame(width: 20, height: 20)
-                                    .shadow(radius: 4.0)
-                            case .number(let number):
-                                Text("\(number)")
-                                    .background(Circle().fill(.white)                                    .frame(width: 20, height: 20))
+                            VStack {
+                                switch otherUser {
+                                case .user(let user):
+                                    Image(user.avatar!)
+                                        .resizable()
+                                        .clipShape(Circle())
+                                        .frame(width: 20, height: 20)
+                                        .shadow(radius: 4.0)
+                                case .number(let number):
+                                    Text("\(number)")
+                                        .frame(width: 20, height: 20)
+                                        .background(Circle().fill(.white) .shadow(radius: 4.0)                                   )
+                                }
                             }
                         }
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                     
                     if user.isCalling {
                         // show the calling signal
@@ -73,6 +77,7 @@ struct UserAvatarView: View {
                 
             )
             .aspectRatio(1.0, contentMode: .fit)
+            .opacity(user.availability == .away ? 0.3 : 1.0)
     }
     
     @ViewBuilder var availability: some View {
@@ -107,7 +112,7 @@ struct CallingSignalView : View {
             .scaleEffect(scale)
             .onAppear {
                 withAnimation(.easeInOut.repeatForever(autoreverses: true)) {
-                    scale = 0.0
+                    scale = 0.2
                 }
             }
     }
@@ -117,12 +122,18 @@ struct UserAvatarView_Previews: PreviewProvider {
     static var previews: some View {
         UserAvatarView(user: User(id: UUID(),
                                   name: "Fernando",
-                                  avatar: nil,
+                                  avatar: User.randomAvatarImageName,
                                   status: nil,
                                   pronouns: nil,
                                   availability: .active,
                                   isCalling: true,
-                                  isPinned: true), inCallWithUsers: [])
+                                  isPinned: true),
+                       inCallWithUsers: [
+                        User(id: UUID(), name: "A", avatar: User.randomAvatarImageName, status: nil, pronouns: nil, availability: .active, isCalling: false, isPinned: false),
+                        User(id: UUID(), name: "A", avatar: User.randomAvatarImageName, status: nil, pronouns: nil, availability: .active, isCalling: false, isPinned: false),
+                        User(id: UUID(), name: "A", avatar: User.randomAvatarImageName, status: nil, pronouns: nil, availability: .active, isCalling: false, isPinned: false)
+                       ])
             .frame(maxHeight: ITEM_HEIGHT)
+            .border(Color.blue)
     }
 }
