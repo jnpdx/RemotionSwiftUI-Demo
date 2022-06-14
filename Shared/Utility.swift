@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension Array {
     func safePrefix(_ index: Int) -> ArraySlice<Element> {
@@ -20,5 +21,12 @@ extension Array {
         guard beginning < self.count else { return [] }
         guard end < self.count else { return self[beginning...self.count - 1] }
         return self[beginning...end]
+    }
+}
+
+struct ViewHeightKey: PreferenceKey {
+    static var defaultValue: CGFloat { 0 }
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = value + nextValue()
     }
 }

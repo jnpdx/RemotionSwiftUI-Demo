@@ -173,13 +173,6 @@ struct UserAvatarView: View {
     }
 }
 
-struct ViewHeightKey: PreferenceKey {
-    static var defaultValue: CGFloat { 0 }
-    static func reduce(value: inout Value, nextValue: () -> Value) {
-        value = value + nextValue()
-    }
-}
-
 struct CallingSignalView : View {
     @State private var scale: CGFloat = 1.0
     

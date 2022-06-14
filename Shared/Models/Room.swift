@@ -12,6 +12,7 @@ struct Room: Identifiable {
     var id = UUID()
     var name: String
     var avatar: String?
+    var emoji: String?
     var color: Color
     
     var isPinned: Bool = true

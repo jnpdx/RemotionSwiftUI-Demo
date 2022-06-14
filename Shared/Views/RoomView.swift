@@ -12,6 +12,7 @@ struct RoomView: View {
     var room: Room
     
     @State private var roomInfoShown = false
+    @State private var viewHeight: CGFloat = 0
 
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
@@ -21,8 +22,19 @@ struct RoomView: View {
                                endPoint: .topTrailing)
                 )
             .aspectRatio(1.0, contentMode: .fit)
+            .background(GeometryReader {
+                Color.clear.preference(key: ViewHeightKey.self,
+                                       value: $0.frame(in: .local).size.height)
+            })
+            .onPreferenceChange(ViewHeightKey.self) {
+                viewHeight = $0
+            }
             .overlay(
-                userIndicator
+                ZStack {
+                    Text(room.emoji ?? "")
+                        .font(.system(size: viewHeight / 2))
+                    userIndicator
+                }
             )
             .onHover(perform: { hovering in
                 roomInfoShown = hovering

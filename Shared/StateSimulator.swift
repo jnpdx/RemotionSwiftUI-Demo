@@ -29,11 +29,12 @@ class StateSimulator {
     static func generateSampleTeam() -> Team {
         let users: [User] = (1...teamSize).map { User.testUserSet(number: $0) }.flatMap { $0 }
         let rooms: [Room] = [
-            .init(name: "Coworking Lounge", color: .blue),
-            .init(name: "Music", color: .green),
-            .init(name: "SwiftUI Experience", color: .red),
+            .init(name: "Coworking Lounge", emoji: "🎉", color: .blue),
+            .init(name: "Music", emoji: "🎶", color: .green),
+            .init(name: "SwiftUI Experience", emoji: "🔨", color: .red),
+            .init(name: "Library", emoji:"📚", color: .orange),
             .init(id: UUID(), name: "Share Pod", avatar: nil, color: .yellow, isPinned: false),
-            .init(id: UUID(), name: "Design Studio", avatar: nil, color: .white, isPinned: false)
+            .init(id: UUID(), name: "Design Studio", avatar: nil, color: .purple, isPinned: false)
         ]
         let calls: [Call] = [
             .init(users: [users.first!.id, users.last!.id], roomID: rooms.first!.id)
