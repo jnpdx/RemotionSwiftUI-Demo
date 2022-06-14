@@ -35,8 +35,8 @@ struct DockView: View {
             RoomView(users: state.usersInRoom(roomID: room.id),
                      room: room
             )
+            .aspectRatio(1.0, contentMode: .fit)
         }
-        .aspectRatio(1.0, contentMode: .fit)
     }
     
     var unpinnedRoomsView: some View {

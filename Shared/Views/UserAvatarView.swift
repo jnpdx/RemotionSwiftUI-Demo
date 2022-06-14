@@ -78,11 +78,14 @@ struct UserAvatarView: View {
                     HStack {
                         if let emojiStatus = user.emojiStatus {
                             Text(emojiStatus)
-                                .font(.system(size: smallElementDimension))
+                                .font(.system(size: smallElementDimension /  1.5))
                                 .aspectRatio(1.0, contentMode: .fit)
                                 .padding(4)
                                 .background(
-                                    Circle().fill(.white)
+                                    Circle()
+                                        .fill(.white)
+                                        .frame(width: smallElementDimension)
+                                        .shadow(radius: 4)
                                 )
                         }
                     }
@@ -227,7 +230,9 @@ struct UserAvatarView_Previews: PreviewProvider {
                                   pronouns: nil,
                                   availability: .active,
                                   isCalling: false,
-                                  isPinned: true),
+                                  isPinned: true,
+                                  emojiStatus: "F"
+                                 ),
                        inCallWithUsers: otherUsers)
             .border(Color.blue)
     }

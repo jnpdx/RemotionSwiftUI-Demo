@@ -15,6 +15,8 @@
 		D23DA6902855582D0061CAE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23DA68E2855582D0061CAE0 /* Assets.xcassets */; };
 		D23DA6972857F7250061CAE0 /* StateSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DA6962857F7250061CAE0 /* StateSimulator.swift */; };
 		D23DA6982857F7250061CAE0 /* StateSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DA6962857F7250061CAE0 /* StateSimulator.swift */; };
+		D23DA69A2858C8530061CAE0 /* GridDockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DA6992858C8530061CAE0 /* GridDockView.swift */; };
+		D23DA69B2858C8530061CAE0 /* GridDockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DA6992858C8530061CAE0 /* GridDockView.swift */; };
 		D2B8DD6D283F5054000391FB /* RemotionSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */; };
 		D2B8DD6E283F5054000391FB /* RemotionSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */; };
 		D2B8DD6F283F5054000391FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8DD5E283F5053000391FB /* ContentView.swift */; };
@@ -40,6 +42,7 @@
 		D23DA68B2854559D0061CAE0 /* Call.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
 		D23DA68E2855582D0061CAE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D23DA6962857F7250061CAE0 /* StateSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateSimulator.swift; sourceTree = "<group>"; };
+		D23DA6992858C8530061CAE0 /* GridDockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridDockView.swift; sourceTree = "<group>"; };
 		D2B8DD5D283F5053000391FB /* RemotionSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotionSwiftUIApp.swift; sourceTree = "<group>"; };
 		D2B8DD5E283F5053000391FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D2B8DD64283F5054000391FB /* RemotionSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemotionSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				D2B8DD8C283F5308000391FB /* DockView.swift */,
+				D23DA6992858C8530061CAE0 /* GridDockView.swift */,
 				D2B8DD8F283F54B1000391FB /* RoomView.swift */,
 				D2B8DD92283F54F5000391FB /* UserAvatarView.swift */,
 			);
@@ -237,6 +241,7 @@
 				D2B8DD80283F507B000391FB /* Team.swift in Sources */,
 				D2B8DD90283F54B1000391FB /* RoomView.swift in Sources */,
 				D2B8DD6F283F5054000391FB /* ContentView.swift in Sources */,
+				D23DA69A2858C8530061CAE0 /* GridDockView.swift in Sources */,
 				D2B8DD6D283F5054000391FB /* RemotionSwiftUIApp.swift in Sources */,
 				D23DA68C2854559D0061CAE0 /* Call.swift in Sources */,
 				D2B8DD7D283F5074000391FB /* User.swift in Sources */,
@@ -256,6 +261,7 @@
 				D2B8DD81283F507B000391FB /* Team.swift in Sources */,
 				D2B8DD91283F54B1000391FB /* RoomView.swift in Sources */,
 				D2B8DD70283F5054000391FB /* ContentView.swift in Sources */,
+				D23DA69B2858C8530061CAE0 /* GridDockView.swift in Sources */,
 				D2B8DD6E283F5054000391FB /* RemotionSwiftUIApp.swift in Sources */,
 				D23DA68D2854559D0061CAE0 /* Call.swift in Sources */,
 				D2B8DD7E283F5074000391FB /* User.swift in Sources */,

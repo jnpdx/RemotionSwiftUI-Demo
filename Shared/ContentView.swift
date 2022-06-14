@@ -11,7 +11,11 @@ struct ContentView: View {
     @StateObject private var state = AppState()
     
     var body: some View {
+        #if os(macOS)
         DockView(state: state)
+        #else
+        GridDockView(state: state)
+        #endif
     }
 }
 
