@@ -23,8 +23,11 @@ class StateSimulator {
         case toggleEmojiStatus
     }
     
+    static private var teamSize = 100
+    private var interval: TimeInterval = 0.1
+    
     static func generateSampleTeam() -> Team {
-        let users: [User] = (1...1).map { User.testUserSet(number: $0) }.flatMap { $0 }
+        let users: [User] = (1...teamSize).map { User.testUserSet(number: $0) }.flatMap { $0 }
         let rooms: [Room] = [
             .init(name: "Coworking Lounge", color: .blue),
             .init(name: "Music", color: .green),
@@ -39,7 +42,7 @@ class StateSimulator {
     }
     
     func startSimulation(appState: AppState) {
-        cancelable = Timer.publish(every: 0.1, on: .main, in: .common)
+        cancelable = Timer.publish(every: interval, on: .main, in: .common)
             .autoconnect()
             .map { (_) -> Team in
                 guard var user = appState.team.users.randomElement() else {

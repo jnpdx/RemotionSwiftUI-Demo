@@ -27,6 +27,7 @@ struct DockView: View {
                 RoundedRectangle(cornerRadius: 20)
                     .aspectRatio(1.0, contentMode: .fit)
                     .overlay(
+                        // TODO: LazyGrid
                         VStack {
                             HStack {
                                 ForEach(Array(state.unPinnedRooms.safeSlice(beginning: 0, end: 2))) { room in

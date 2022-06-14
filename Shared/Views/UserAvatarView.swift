@@ -105,6 +105,7 @@ struct UserAvatarView: View {
                                         )
                                 case .number(let number):
                                     Text("\(number)")
+                                        .foregroundColor(.black)
                                         .frame(width: smallElementDimension, height: smallElementDimension)
                                         .background(Circle().fill(.white) .shadow(radius: 4.0))
                                 }
@@ -114,7 +115,6 @@ struct UserAvatarView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                     
                     if user.isCalling {
-                        // show the calling signal
                         CallingSignalView()
                     }
                     
@@ -127,7 +127,6 @@ struct UserAvatarView: View {
             .aspectRatio(1.0, contentMode: .fit)
             .onPreferenceChange(ViewHeightKey.self) {
                 viewHeight = $0
-                print("Height: \($0)")
             }
             .onTapGesture {
                 userInfoShown.toggle()

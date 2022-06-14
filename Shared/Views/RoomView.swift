@@ -46,6 +46,7 @@ struct RoomView: View {
             VStack {
                 Text("\(users.count)")
                     .padding(8)
+                    .foregroundColor(.black)
             }
             .background(
                 RoundedRectangle(cornerRadius: 8.0)
