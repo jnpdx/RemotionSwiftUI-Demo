@@ -18,7 +18,7 @@ struct DockView: View {
                 
                 roomsViews
                 
-                unpinnedRoomsView
+                // unpinnedRoomsView
                 
                 Divider()
                 

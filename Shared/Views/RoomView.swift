@@ -54,7 +54,7 @@ struct RoomView: View {
     }
     
     @ViewBuilder var userIndicator: some View {
-        if !users.isEmpty {
+        if !users.isEmpty, room.isPinned {
             VStack {
                 Text("\(users.count)")
                     .padding(8)
