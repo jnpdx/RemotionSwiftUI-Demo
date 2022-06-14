@@ -8,8 +8,6 @@
 import Foundation
 import SwiftUI
 
-var ITEM_HEIGHT: CGFloat = 80
-
 struct DockView: View {
     @ObservedObject var state: AppState
     
@@ -23,11 +21,11 @@ struct DockView: View {
                     RoomView(users: state.usersInRoom(roomID: room.id),
                              room: room
                     )
-                }.frame(width: ITEM_HEIGHT)
+                }
+                .aspectRatio(1.0, contentMode: .fit)
                 
                 RoundedRectangle(cornerRadius: 20)
                     .aspectRatio(1.0, contentMode: .fit)
-                    .frame(width: ITEM_HEIGHT)
                     .overlay(
                         VStack {
                             HStack {
@@ -51,10 +49,11 @@ struct DockView: View {
                 LazyVStack {
                     ForEach(state.pinnedUsers) { user in
                         UserAvatarView(user: user, inCallWithUsers: state.inCallWithUsers(forUserID: user.id))
-                            .frame(maxHeight: ITEM_HEIGHT)
+                            .aspectRatio(1.0, contentMode: .fit)
                     }
                 }
             }
+            .padding()
         }
     }
 }

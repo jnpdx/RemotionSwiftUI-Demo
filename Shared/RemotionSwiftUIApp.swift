@@ -13,7 +13,7 @@ struct RemotionSwiftUIApp: App {
         WindowGroup {
             #if os(macOS)
             ContentView()
-                .frame(width: 200, height: 800)
+                .frame(minWidth: 80, maxWidth: 200, idealHeight: 800)
             #else
             ContentView()
             #endif

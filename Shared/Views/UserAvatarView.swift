@@ -17,6 +17,7 @@ struct UserAvatarView: View {
     var inCallWithUsers: [User]
 
     @State private var userInfoShown = false
+    @State private var viewHeight: CGFloat = 0
     
     enum OtherUser: Identifiable {
         case user(User)
@@ -41,10 +42,19 @@ struct UserAvatarView: View {
         return inCallWithUsers.map { OtherUser.user($0) }
     }
     
+    var smallElementDimension: CGFloat {
+        viewHeight / 4
+    }
+    
     var body: some View {
         Circle()
+            .background(GeometryReader {
+                Color.clear.preference(key: ViewHeightKey.self,
+                                       value: $0.frame(in: .local).size.height)
+            })
             .overlay(
                 ZStack {
+                    
                     Image(user.avatar)
                         .resizable()
                         .clipShape(Circle())
@@ -60,7 +70,7 @@ struct UserAvatarView: View {
                     
                     HStack {
                         availability
-                            .frame(width: 20, height: 20)
+                            .frame(width: smallElementDimension, height: smallElementDimension)
                             .padding(2)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
@@ -68,7 +78,7 @@ struct UserAvatarView: View {
                     HStack {
                         if let emojiStatus = user.emojiStatus {
                             Text(emojiStatus)
-                                .font(.system(size: 20))
+                                .font(.system(size: smallElementDimension))
                                 .aspectRatio(1.0, contentMode: .fit)
                                 .padding(4)
                                 .background(
@@ -86,7 +96,7 @@ struct UserAvatarView: View {
                                     Image(user.avatar)
                                         .resizable()
                                         .clipShape(Circle())
-                                        .frame(width: 20, height: 20)
+                                        .frame(width: smallElementDimension, height: smallElementDimension)
                                         .shadow(radius: 4.0)
                                         .overlay(
                                             Circle()
@@ -95,7 +105,7 @@ struct UserAvatarView: View {
                                         )
                                 case .number(let number):
                                     Text("\(number)")
-                                        .frame(width: 20, height: 20)
+                                        .frame(width: smallElementDimension, height: smallElementDimension)
                                         .background(Circle().fill(.white) .shadow(radius: 4.0))
                                 }
                             }
@@ -109,12 +119,16 @@ struct UserAvatarView: View {
                     }
                     
                     if let emoji = user.sentEmoji {
-                        SentEmojiView(emoji: emoji)
+                        SentEmojiView(emoji: emoji, size: viewHeight)
                             .id(emoji.id)
                     }
                 }
             )
             .aspectRatio(1.0, contentMode: .fit)
+            .onPreferenceChange(ViewHeightKey.self) {
+                viewHeight = $0
+                print("Height: \($0)")
+            }
             .onTapGesture {
                 userInfoShown.toggle()
             }
@@ -157,6 +171,13 @@ struct UserAvatarView: View {
     }
 }
 
+struct ViewHeightKey: PreferenceKey {
+    static var defaultValue: CGFloat { 0 }
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value = value + nextValue()
+    }
+}
+
 struct CallingSignalView : View {
     @State private var scale: CGFloat = 1.0
     
@@ -174,12 +195,13 @@ struct CallingSignalView : View {
 
 struct SentEmojiView : View {
     var emoji: SentEmoji
+    var size: CGFloat
     @State private var opacity : CGFloat = 1.0
     @State private var scale : CGFloat = 0.5
     
     var body: some View {
         Text(emoji.emoji)
-            .font(.system(size: 80))
+            .font(.system(size: size))
             .opacity(opacity)
             .scaleEffect(scale)
             .onAppear {
@@ -208,7 +230,6 @@ struct UserAvatarView_Previews: PreviewProvider {
                                   isCalling: false,
                                   isPinned: true),
                        inCallWithUsers: otherUsers)
-            .frame(maxHeight: ITEM_HEIGHT)
             .border(Color.blue)
     }
 }
