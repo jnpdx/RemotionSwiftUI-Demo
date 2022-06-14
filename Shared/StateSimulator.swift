@@ -23,8 +23,8 @@ class StateSimulator {
         case toggleEmojiStatus
     }
     
-    static private var teamSize = 100
-    private var interval: TimeInterval = 0.1
+    static private var teamSize = 2
+    private var interval: TimeInterval = 0.33
     
     static func generateSampleTeam() -> Team {
         let users: [User] = (1...teamSize).map { User.testUserSet(number: $0) }.flatMap { $0 }
