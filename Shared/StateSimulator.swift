@@ -20,10 +20,11 @@ class StateSimulator {
         case toggleAvailability
         case toggleTalking
         case sendEmoji
+        case toggleEmojiStatus
     }
     
     static func generateSampleTeam() -> Team {
-        let users: [User] = (1...2).map { User.testUserSet(number: $0) }.flatMap { $0 }
+        let users: [User] = (1...20).map { User.testUserSet(number: $0) }.flatMap { $0 }
         let rooms: [Room] = [
             .init(name: "Coworking Lounge", color: .blue),
             .init(name: "Music", color: .green),
@@ -38,7 +39,7 @@ class StateSimulator {
     }
     
     func startSimulation(appState: AppState) {
-        cancelable = Timer.publish(every: 0.2, on: .main, in: .common)
+        cancelable = Timer.publish(every: 0.1, on: .main, in: .common)
             .autoconnect()
             .map { (_) -> Team in
                 guard var user = appState.team.users.randomElement() else {
@@ -103,6 +104,9 @@ class StateSimulator {
                 case .sendEmoji:
                     let randomEmoji = ["🐱","😀","💡","❤️","🔥","🎉"].randomElement()!
                     user.sentEmoji = SentEmoji(emoji: randomEmoji)
+                case .toggleEmojiStatus:
+                    let randomEmoji = ["🎷","🥳","📎","📚","🍿"].randomElement()!
+                    user.emojiStatus = randomEmoji
                 }
                 
                 team.users = team.users.map { $0.id == user.id ? user : $0 }

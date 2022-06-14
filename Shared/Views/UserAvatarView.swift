@@ -57,12 +57,27 @@ struct UserAvatarView: View {
                                 .strokeBorder(user.isTalking ? .red : .clear,
                                               lineWidth: user.isTalking ? 4 : 0)
                         )
+                    
                     HStack {
                         availability
                             .frame(width: 20, height: 20)
                             .padding(2)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                    
+                    HStack {
+                        if let emojiStatus = user.emojiStatus {
+                            Text(emojiStatus)
+                                .font(.system(size: 20))
+                                .aspectRatio(1.0, contentMode: .fit)
+                                .padding(4)
+                                .background(
+                                    Circle().fill(.white)
+                                )
+                        }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                    
                     HStack {
                         ForEach(otherUsersDisplay) { otherUser in
                             VStack {
