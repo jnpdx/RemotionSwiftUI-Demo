@@ -19,6 +19,7 @@ class StateSimulator {
         case leaveCall
         case toggleAvailability
         case toggleTalking
+        case sendEmoji
     }
     
     static func generateSampleTeam() -> Team {
@@ -99,6 +100,9 @@ class StateSimulator {
                         user.isCalling = false
                         user.isTalking = false
                     }
+                case .sendEmoji:
+                    let randomEmoji = ["🐱","😀","💡","❤️","🔥","🎉"].randomElement()!
+                    user.sentEmoji = SentEmoji(emoji: randomEmoji)
                 }
                 
                 team.users = team.users.map { $0.id == user.id ? user : $0 }

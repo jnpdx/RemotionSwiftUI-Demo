@@ -17,6 +17,7 @@ struct User: Identifiable, Equatable, Hashable {
     var isCalling: Bool = false
     var isTalking: Bool = false
     var isPinned: Bool = true
+    var sentEmoji: SentEmoji?
     
     enum Availability : CaseIterable {
         case active, focused, away

@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+struct SentEmoji: Identifiable, Hashable {
+    var id = UUID()
+    var emoji: String
+}
+
 struct UserAvatarView: View {
     var user: User
     var inCallWithUsers: [User]
@@ -86,6 +91,11 @@ struct UserAvatarView: View {
                         // show the calling signal
                         CallingSignalView()
                     }
+                    
+                    if let emoji = user.sentEmoji {
+                        SentEmojiView(emoji: emoji)
+                            .id(emoji.id)
+                    }
                 }
             )
             .aspectRatio(1.0, contentMode: .fit)
@@ -141,6 +151,25 @@ struct CallingSignalView : View {
             .onAppear {
                 withAnimation(.easeInOut.repeatForever(autoreverses: true)) {
                     scale = 0.2
+                }
+            }
+    }
+}
+
+struct SentEmojiView : View {
+    var emoji: SentEmoji
+    @State private var opacity : CGFloat = 1.0
+    @State private var scale : CGFloat = 0.5
+    
+    var body: some View {
+        Text(emoji.emoji)
+            .font(.system(size: 80))
+            .opacity(opacity)
+            .scaleEffect(scale)
+            .onAppear {
+                withAnimation(.easeInOut(duration: 2.5)) {
+                    opacity = 0.0
+                    scale = 1.5
                 }
             }
     }
