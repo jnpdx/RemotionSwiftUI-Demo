@@ -16,45 +16,55 @@ struct DockView: View {
             VStack {
                 //TODO: user avatar
                 
-                //rooms
-                ForEach(state.pinnedRooms) { room in
-                    RoomView(users: state.usersInRoom(roomID: room.id),
-                             room: room
-                    )
-                }
-                .aspectRatio(1.0, contentMode: .fit)
+                roomsViews
                 
-                RoundedRectangle(cornerRadius: 20)
-                    .aspectRatio(1.0, contentMode: .fit)
-                    .overlay(
-                        // TODO: LazyGrid
-                        VStack {
-                            HStack {
-                                ForEach(Array(state.unPinnedRooms.safeSlice(beginning: 0, end: 2))) { room in
-                                    RoomView(users: state.usersInRoom(roomID: room.id), room: room)
-                                }
-                            }
-                            .frame(maxHeight: 60)
-                            HStack {
-                                ForEach(Array(state.unPinnedRooms.safeSlice(beginning: 3, end: 4))) { room in
-                                    RoomView(users: state.usersInRoom(roomID: room.id), room: room)
-                                }
-                            }
-                            .frame(maxHeight: 60)
-                        }
-                    )
-                
+                unpinnedRoomsView
                 
                 Divider()
                 
                 LazyVStack {
-                    ForEach(state.pinnedUsers) { user in
-                        UserAvatarView(user: user, inCallWithUsers: state.inCallWithUsers(forUserID: user.id))
-                            .aspectRatio(1.0, contentMode: .fit)
-                    }
+                    pinnedUsersViews
                 }
             }
             .padding()
+        }
+    }
+    
+    var roomsViews: some View {
+        ForEach(state.pinnedRooms) { room in
+            RoomView(users: state.usersInRoom(roomID: room.id),
+                     room: room
+            )
+        }
+        .aspectRatio(1.0, contentMode: .fit)
+    }
+    
+    var unpinnedRoomsView: some View {
+        RoundedRectangle(cornerRadius: 20)
+            .aspectRatio(1.0, contentMode: .fit)
+            .overlay(
+                // TODO: LazyGrid
+                VStack {
+                    HStack {
+                        ForEach(Array(state.unPinnedRooms.safeSlice(beginning: 0, end: 2))) { room in
+                            RoomView(users: state.usersInRoom(roomID: room.id), room: room)
+                        }
+                    }
+                    .frame(maxHeight: 60)
+                    HStack {
+                        ForEach(Array(state.unPinnedRooms.safeSlice(beginning: 3, end: 4))) { room in
+                            RoomView(users: state.usersInRoom(roomID: room.id), room: room)
+                        }
+                    }
+                    .frame(maxHeight: 60)
+                }
+            )
+    }
+    
+    var pinnedUsersViews: some View {
+        ForEach(state.pinnedUsers) { user in
+            UserAvatarView(user: user, inCallWithUsers: state.inCallWithUsers(forUserID: user.id))
+                .aspectRatio(1.0, contentMode: .fit)
         }
     }
 }
