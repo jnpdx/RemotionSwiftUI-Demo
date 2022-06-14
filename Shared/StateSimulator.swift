@@ -134,15 +134,17 @@ extension User {
     
     static func testUserSet(number: Int) -> [User] {
         return [
-            .init(name: "Alexander \(number)", avatar: User.randomAvatarImageName, availability: .active, isCalling: false),
-            .init(name: "John \(number)",  avatar: User.randomAvatarImageName, pronouns: "he/him", availability: .active),
-            .init(name: "Zak \(number)",  avatar: User.randomAvatarImageName,availability: .active),
-            .init(name: "Fernando \(number)",  avatar: User.randomAvatarImageName,availability: .active),
-            .init(name: "Harriet \(number)",  avatar: User.randomAvatarImageName,pronouns: "she/her", availability: .active),
-            .init(name: "Kay-Anne \(number)",  avatar: User.randomAvatarImageName,availability: .active),
-            .init(name: "Charley \(number)",  avatar: User.randomAvatarImageName,availability: .active),
-            .init(name: "Angela \(number)",  avatar: User.randomAvatarImageName,availability: .away),
-            .init(name: "TJ \(number)",  avatar: User.randomAvatarImageName,pronouns: "they/their",availability: .away),
+            .init(name: "Alexander \(number)", avatar: "Avatar-1", availability: .active, isCalling: false),
+            .init(name: "John \(number)",  avatar: "Avatar-2", pronouns: "he/him", availability: .active),
+            .init(name: "Zak \(number)",  avatar: "Avatar-3",availability: .active),
+            .init(name: "Fernando \(number)",  avatar: "Avatar-4",availability: .active),
+            .init(name: "Harriet \(number)",  avatar: "Avatar-5",pronouns: "she/her", availability: .active),
+            .init(name: "Kay-Anne \(number)",  avatar: "Avatar-6",availability: .active),
+            .init(name: "Charley \(number)",  avatar: "Avatar-7",availability: .active),
+            .init(name: "Angela \(number)",  avatar: "Avatar-8",availability: .away),
+            .init(name: "TJ \(number)",  avatar: "Avatar-9",pronouns: "they/their",availability: .away),
+            .init(name: "Reed \(number)",  avatar: "Avatar-1",availability: .away),
+            .init(name: "Dan \(number)",  avatar: "Avatar-2",availability: .away),
         ]
     }
 }

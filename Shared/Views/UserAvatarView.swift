@@ -45,12 +45,13 @@ struct UserAvatarView: View {
         Circle()
             .overlay(
                 ZStack {
-                    Image(user.avatar!)
+                    Image(user.avatar)
                         .resizable()
                         .clipShape(Circle())
                         .aspectRatio(1.0, contentMode: .fit)
                         .opacity(user.availability == .away ? 0.4 : 1.0)
                         .saturation(user.availability == .away ? 0.1 : 1.0)
+                        .brightness(user.availability == .away ? 0.3 : 0)
                         .overlay(
                             Circle()
                                 .strokeBorder(user.isTalking ? .red : .clear,
@@ -67,7 +68,7 @@ struct UserAvatarView: View {
                             VStack {
                                 switch otherUser {
                                 case .user(let user):
-                                    Image(user.avatar!)
+                                    Image(user.avatar)
                                         .resizable()
                                         .clipShape(Circle())
                                         .frame(width: 20, height: 20)

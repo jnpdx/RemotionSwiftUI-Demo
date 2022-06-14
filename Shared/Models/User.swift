@@ -10,7 +10,7 @@ import Foundation
 struct User: Identifiable, Equatable, Hashable {
     var id = UUID()
     var name: String
-    var avatar: String?
+    var avatar: String
     var status: String?
     var pronouns: String?
     var availability: Availability
