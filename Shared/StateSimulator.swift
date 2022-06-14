@@ -23,7 +23,7 @@ class StateSimulator {
     }
     
     static func generateSampleTeam() -> Team {
-        let users: [User] = (1...1).map { User.testUserSet(number: $0) }.flatMap { $0 }
+        let users: [User] = (1...2).map { User.testUserSet(number: $0) }.flatMap { $0 }
         let rooms: [Room] = [
             .init(name: "Coworking Lounge", color: .blue),
             .init(name: "Music", color: .green),
@@ -38,7 +38,7 @@ class StateSimulator {
     }
     
     func startSimulation(appState: AppState) {
-        cancelable = Timer.publish(every: 0.3, on: .main, in: .common)
+        cancelable = Timer.publish(every: 0.2, on: .main, in: .common)
             .autoconnect()
             .map { (_) -> Team in
                 guard var user = appState.team.users.randomElement() else {

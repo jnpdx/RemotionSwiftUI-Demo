@@ -167,7 +167,7 @@ struct SentEmojiView : View {
             .opacity(opacity)
             .scaleEffect(scale)
             .onAppear {
-                withAnimation(.easeInOut(duration: 2.5)) {
+                withAnimation(.easeOut(duration: 4.0)) {
                     opacity = 0.0
                     scale = 1.5
                 }
